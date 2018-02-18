@@ -12,3 +12,60 @@ Requisitos:
 * pip
 * virtualenv
 * Flask
+
+#### Instalar Python 3 ####
+
+> apt install python3
+
+#### Instalar pip ####
+
+> apt install python3-pip
+
+#### Instalar virtualenv ####
+
+> pip3 install virtualenv
+
+#### Criar o ambiente ####
+
+Crie um diretório em um local de seu desejo para armazenar ambientes virtuais. Nele você irá criar uma ambiente virtual para este projeto:
+
+> virtualenv lina-ic --python=python3
+
+*lina-ic* será o nome do ambiente. Esse nome fica a sua escolha.
+
+Você terá a seguinte estrutura de diretórios:
+
+    ambientes-virtuais/
+    |̣----lina-ic/
+    |    |----bin/
+    |    |----include/
+    |    |----lib/
+    |    |----share/
+
+#### Ativar e Desativar o ambiente ####
+
+Ativar:
+
+> source ambientes-virtuais/lina-ic/bin/activate
+
+Desativar:
+
+> deactivate
+
+#### Instalar o Flask ####
+
+Com o ambiente virtual ativado instale o framework Flask:
+
+> pip install Flask
+
+#### Executar a aplicação ####
+
+Para executar a aplicação:
+
+> FLASK_APP=server.py flask run
+
+Abra o navegador em [localhost:5000](localhost:5000)
+
+#### Configuração no Windows ####
+
+[Tutorial de Instalação do Python, pip e virtualenv](http://timmyreilly.azurewebsites.net/python-pip-virtualenv-installation-on-windows/)
