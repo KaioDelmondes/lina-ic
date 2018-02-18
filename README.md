@@ -64,7 +64,7 @@ Para executar a aplicação:
 
 > FLASK_APP=server.py flask run
 
-Abra o navegador em [localhost:5000](localhost:5000)
+Abra o navegador em [localhost:5000](http://localhost:5000)
 
 #### Configuração no Windows ####
 
