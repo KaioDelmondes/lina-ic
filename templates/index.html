@@ -3,8 +3,94 @@
 <head>
   <meta charset="utf-8">
   <title>Rotulação de Clusters</title>
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
 </head>
 <body>
-  Rotulação
+  
+  <h1>Rotulação de Clusters</h1>
+  <p>Selecione uma base de dados já agrupada no formato .csv</p>
+  
+  <!--Formulário de Entrada de dados-->
+  <form>
+
+    <!--
+      Escolha do arquivo da base de dados:
+      * obrigatório estar no formato .CSV
+    -->
+    <input name="database" type="file" required>
+    
+    <!--
+      Opções Avançadas: possuem os valores padrões.
+      Não precisam ser configurados. Usuários mais
+      experientes podem precisar delas para realizar
+      uma gama maior de testes.
+    -->
+    <fieldset>  
+      <legend>Opções Avançadas</legend>
+      
+      <!--
+        Estes campos estão ocultos por padrão.
+        Para exibi-los é preciso clicar no nome
+        "Opções Avançadas".
+      -->
+      <div id="ocultos">
+
+        <!--
+          Selecionar o algoritmo de Discretização:
+          O valor padrão é: [...].
+          As outras opções são:
+          * [...]
+          * [...]
+        -->
+        <label>Algoritmo de Discretização</label>
+        <select name="alg_disc">
+          <option value="Algoritmo1">Algoritmo 1</option>
+          <option value="Algoritmo2">Algoritmo 2</option>
+        </select>
+        
+        <!--
+          A variação V expressa em porcentagem (%), é utilizada para
+          eliminar a possível ambiguidade entre clusters selecionando
+          todos os atributos que possuem até um diferença V em relação
+          ao atributo com maior taxa de acerto e descartar os demais.
+        -->
+        <label>Variação V. (%)</label>
+        <input type="range" name="varv" value="10" min="0" max="20">
+        
+        <!--
+          Número de faixas de valores para discretização. Este valor
+          representa a quantidade de valores discretos que um atributo
+          pode assumir.
+        -->
+        <label>Nº de faixas</label>
+        <input type="range" name="faixas" value="3" min="0" max="10">
+
+        <!--
+          Selecionar o algoritmo de Classificação:
+          O valor padrão é: [...].
+          As outras opções são:
+          * [...]
+          * [...]
+        -->
+        <label>Algoritmo de Classificação</label>
+        <select name="alg_clas">
+          <option value="Algoritmo1">Algoritmo 1</option>
+          <option value="Algoritmo2">Algoritmo 2</option>
+        </select>
+        
+        <!--
+          Percentagem de elementos da base de dados que servirão
+          de entrada para a fase de treinamento do modelo proposto.
+        -->
+        <label>% de dados para treino</label>
+        <input type="range" name="treino" value="60" min="40" max="80">
+      </div>
+
+    </fieldset>
+    
+    <input type="submit" value="Rotular Base">
+
+  </form>
+
 </body>
 </html>
