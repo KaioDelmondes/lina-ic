@@ -37,11 +37,11 @@ Crie um diretório em um local de seu desejo para armazenar ambientes virtuais. 
 Você terá a seguinte estrutura de diretórios:
 
     ambientes-virtuais/
-    |̣----lina-ic/
-    |    |----bin/
-    |    |----include/
-    |    |----lib/
-    |    |----share/
+    └─── lina-ic/
+         ├─── bin/
+         ├─── include/
+         ├─── lib/
+         └─── share/
 
 #### Ativar e Desativar o ambiente ####
 
