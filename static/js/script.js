@@ -15,12 +15,17 @@ input.addEventListener('change', function() {
 });
 
 var legend = document.getElementsByTagName('legend')[0];
-var avanced_options = document.getElementById('avancados');
+var svgTriangle = legend.children[0];
+var avancedOptions = document.getElementById('avancados');
 legend.addEventListener('click', function() {
-  var display = avanced_options.style.display;
+  var display = avancedOptions.style.display;
   if(display == '') {
-    avanced_options.style.display = 'block';
+    avancedOptions.style.display = 'block';
+    svgTriangle.style.transform = 'rotate(180deg)';
+    svgTriangle.style.webkitTransform = 'rotate(180deg)';
   } else {
-    avanced_options.style.display = '';
+    avancedOptions.style.display = '';
+    svgTriangle.style.transform = '';
+    svgTriangle.style.webkitTransform = '';
   }
 });
