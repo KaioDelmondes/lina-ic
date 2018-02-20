@@ -1,5 +1,12 @@
 from discretizacao import discretizacao as disc
 import numpy as np
+"""
+	Módulo que auxilia na discretização da BD. Com esse módulo é possivel discretizar toda a BD, ao invés de apenas um atributo por vez.
+	Parâmetros:
+		BD: A base de dados a ser discretizada.
+		categorias: um vetor de numeros inteiros com as faixas de discretização para cada atributo respectivamente. Esse vetor deve ter a mesma quantidade de elementos que atributos existentes na BD.
+		metodo: uma string, 'EFD' ou 'EWD', descrevendo o método de discretização.
+"""
 def discretizador(bd, categorias, metodo):
 	bdd = []
 	infor = []
