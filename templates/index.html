@@ -44,55 +44,59 @@
         -->
         <div id="avancados">
 
-          <!--
-            Selecionar o algoritmo de Discretização:
-            O valor padrão é: [...].
-            As outras opções são:
-            * [...]
-            * [...]
-          -->
-          <label>Algoritmo de Discretização</label>
-          <select name="alg_disc">
-            <option value="Algoritmo1">Algoritmo 1</option>
-            <option value="Algoritmo2">Algoritmo 2</option>
-          </select>
-          
-          <!--
-            A variação V expressa em porcentagem (%), é utilizada para
-            eliminar a possível ambiguidade entre clusters selecionando
-            todos os atributos que possuem até um diferença V em relação
-            ao atributo com maior taxa de acerto e descartar os demais.
-          -->
-          <label>Variação V. (%)</label>
-          <input type="range" name="varv" value="10" min="0" max="20">
-          
-          <!--
-            Número de faixas de valores para discretização. Este valor
-            representa a quantidade de valores discretos que um atributo
-            pode assumir.
-          -->
-          <label>Nº de faixas</label>
-          <input type="range" name="faixas" value="3" min="0" max="10">
+          <div id="esquerda">
+            <!--
+              Selecionar o algoritmo de Discretização:
+              O valor padrão é: [...].
+              As outras opções são:
+              * [...]
+              * [...]
+            -->
+            <label>Algoritmo de Discretização</label>
+            <select name="alg_disc">
+              <option value="Algoritmo1">Algoritmo 1</option>
+              <option value="Algoritmo2">Algoritmo 2</option>
+            </select>
+            
+            <!--
+              A variação V expressa em porcentagem (%), é utilizada para
+              eliminar a possível ambiguidade entre clusters selecionando
+              todos os atributos que possuem até um diferença V em relação
+              ao atributo com maior taxa de acerto e descartar os demais.
+            -->
+            <label>Variação V. (%)</label>
+            <input type="range" name="varv" value="10" min="0" max="20">
+            
+            <!--
+              Número de faixas de valores para discretização. Este valor
+              representa a quantidade de valores discretos que um atributo
+              pode assumir.
+            -->
+            <label>Nº de faixas</label>
+            <input type="range" name="faixas" value="3" min="0" max="10">
+          </div>
 
-          <!--
-            Selecionar o algoritmo de Classificação:
-            O valor padrão é: [...].
-            As outras opções são:
-            * [...]
-            * [...]
-          -->
-          <label>Algoritmo de Classificação</label>
-          <select name="alg_clas">
-            <option value="Algoritmo1">Algoritmo 1</option>
-            <option value="Algoritmo2">Algoritmo 2</option>
-          </select>
-          
-          <!--
-            Percentagem de elementos da base de dados que servirão
-            de entrada para a fase de treinamento do modelo proposto.
-          -->
-          <label>% de dados para treino</label>
-          <input type="range" name="treino" value="60" min="40" max="80">
+          <div id="direita">
+            <!--
+              Selecionar o algoritmo de Classificação:
+              O valor padrão é: [...].
+              As outras opções são:
+              * [...]
+              * [...]
+            -->
+            <label>Algoritmo de Classificação</label>
+            <select name="alg_clas">
+              <option value="Algoritmo1">Algoritmo 1</option>
+              <option value="Algoritmo2">Algoritmo 2</option>
+            </select>
+            
+            <!--
+              Percentagem de elementos da base de dados que servirão
+              de entrada para a fase de treinamento do modelo proposto.
+            -->
+            <label>% de dados para treino</label>
+            <input type="range" name="treino" value="60" min="40" max="80">
+          </div>
         </div>
 
       </fieldset>
