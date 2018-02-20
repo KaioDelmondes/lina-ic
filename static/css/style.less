@@ -3,17 +3,20 @@
 @middle-color: #999;
 @light-color: #EBEBEB;
 @fonts: '../fonts';
+@fsize-sm: 1em;
+@fsize-m: 1.2em;
+@fsize-lg: 1.8em;
 
 @font-face {
   font-family: Allerta;
   src: url('@{fonts}/Allerta/Allerta-Regular.ttf');
 }
 
-.centro {
+.centro() {
   text-align: center;
 }
 
-.borda {
+.borda() {
   border: 1px solid @light-color;
   border-radius: 2px;
 }
@@ -38,12 +41,17 @@
   margin: 8px auto;
 }
 
+.transicao() {
+  transition: 0.5s;
+}
+
 .withFile {
   color: @dark-color;
 }
 
 body {
   font-family: Allerta;
+  font-size: @fsize-sm;
   color: @dark-color;
 }
 
@@ -52,7 +60,12 @@ section {
   .big-box;
 }
 
-h1, p {
+h1 {
+  .centro;
+  font-size: @fsize-lg;
+}
+
+p {
   .centro;
 }
 
@@ -85,4 +98,16 @@ svg {
 
 #ocultos {
   display: none;
+}
+
+[type='submit'] {
+  .little-box;
+  background-color: @light-color;
+  color: @dark-color;
+  font-size: @fsize-m;
+  font-weight: bold;
+  &:hover {
+    background-color: @middle-color;
+    .transicao;
+  }
 }
