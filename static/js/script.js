@@ -13,3 +13,14 @@ input.addEventListener('change', function() {
     span.textContent = name + ' (' + size + 'mb)';
   }
 });
+
+var legend = document.getElementsByTagName('legend')[0];
+var avanced_options = document.getElementById('avancados');
+legend.addEventListener('click', function() {
+  var display = avanced_options.style.display;
+  if(display == '') {
+    avanced_options.style.display = 'block';
+  } else {
+    avanced_options.style.display = '';
+  }
+});
