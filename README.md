@@ -12,6 +12,7 @@ Requisitos:
 * pip
 * virtualenv
 * Flask
+* lesscss
 
 #### Instalar Python 3 ####
 
@@ -57,6 +58,12 @@ Desativar:
 Com o ambiente virtual ativado instale o framework Flask:
 
 > pip install Flask
+
+#### Instalar o lesscss ####
+
+Biblioteca para converter código .less em .css:
+
+> pip install lesscss
 
 #### Executar a aplicação ####
 
