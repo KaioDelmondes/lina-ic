@@ -1,5 +1,6 @@
 @nice-blue: #007BFF;
-@dark-color: #333333;
+@dark-color: #333;
+@middle-color: #999;
 @light-color: #EBEBEB;
 @fonts: '../fonts';
 
@@ -17,12 +18,24 @@
   border-radius: 2px;
 }
 
-.box {
+.box() {
   display: block;
   box-sizing: border-box;
+}
+
+.big-box() {
+  .box;
   width: 50%;
-  padding: 40px;
+  padding: 40px 60px;
   margin: 50px auto;
+  border-radius: 10px;
+}
+
+.little-box() {
+  .box;
+  width: 100%;
+  padding: 8px;
+  margin: 8px auto;
 }
 
 body {
@@ -32,13 +45,24 @@ body {
 
 section {
   .borda;
-  .box;
+  .big-box;
 }
 
 h1, p {
   .centro;
 }
 
-input {
+input, select {
   .borda;
+}
+
+[type='file'] {
+  display: none;
+}
+
+span {
+  color: @middle-color;
+  text-decoration: none;
+  .borda;
+  .little-box;
 }
