@@ -17,21 +17,21 @@ class discretizacao (object):
 		else: 
 			return False 
 
-	# Discretiza os dados pelo critério de larguras iguais, ou seja, retorna faixas de valores com aproximadamente o mesmo tamanho.
+	# Discretiza os dados pelo critério de larguras iguais. Retorna faixas de valores com aproximadamente o mesmo tamanho.
 	def EWD (self):
 		if not self.teste():
-			dados_discr = pd.cut(self.lista, bins = self.numIntervalos, labels = range(self.numIntervalos),retbins= True)
+			dados_discr = pd.cut(self.lista, bins = self.numIntervalos, labels = False, retbins= True)
 			return dados_discr
 		else :
-			return 'Dados iguais.'
+			return self.lista
 			
-	# Disretiza os dados pelo critério de frequências iguais, ou seja, retorna faixas de valores com aproximadamente o mesmo número de dados.
+	# Disretiza os dados pelo critério de frequências iguais.Retorna faixas de valores com aproximadamente o mesmo número de dados.
 	def EFD (self):
 		if not self.teste():
-			dados_discr = pd.qcut(self.lista, self.numIntervalos, labels = range(self.numIntervalos), retbins = True, duplicates = 'drop')
+			dados_discr = pd.qcut(self.lista, self.numIntervalos, labels = False, retbins = True, duplicates = 'drop')
 			return dados_discr
 		else: 
-			return 'Dados iguais'
+			return self.lista
 
 
 	
