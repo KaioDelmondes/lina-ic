@@ -29,3 +29,25 @@ legend.addEventListener('click', function() {
     svgTriangle.style.webkitTransform = '';
   }
 });
+
+var range_varv = document.getElementsByName("varv")[0];
+var range_faixas = document.getElementsByName("faixas")[0];
+var range_treino = document.getElementsByName("treino")[0];
+var varv = document.getElementById("varv");
+var faixas = document.getElementById("faixas");
+var treino = document.getElementById("treino");
+varv.innerHTML = range_varv.value;
+faixas.innerHTML = range_faixas.value;
+treino.innerHTML = range_treino.value;
+
+range_varv.addEventListener('change', function() {
+  varv.innerHTML = this.value;
+});
+
+range_faixas.addEventListener('change', function() {
+  faixas.innerHTML = this.value;
+});
+
+range_treino.addEventListener('change', function() {
+  treino.innerHTML = this.value;
+});

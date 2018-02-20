@@ -20,7 +20,7 @@
       -->
       <label>
         <input name="database" type="file" accept=".csv" required>
-        <span>Selecione uma base de dados .csv</span>
+        <span id="database">Selecione uma base de dados .csv</span>
       </label>
       
       <!--
@@ -65,7 +65,8 @@
               ao atributo com maior taxa de acerto e descartar os demais.
             -->
             <label>Variação V. (%)</label>
-            <input type="range" name="varv" value="10" min="0" max="20">
+            <input type="range" name="varv" value="10" min="1" max="20">
+            <span id="varv"></span>
             
             <!--
               Número de faixas de valores para discretização. Este valor
@@ -73,7 +74,8 @@
               pode assumir.
             -->
             <label>Nº de faixas</label>
-            <input type="range" name="faixas" value="3" min="0" max="10">
+            <input type="range" name="faixas" value="3" min="1" max="10">
+            <span id="faixas"></span>
           </div>
 
           <div id="direita">
@@ -96,6 +98,7 @@
             -->
             <label>% de dados para treino</label>
             <input type="range" name="treino" value="60" min="40" max="80">
+            <span id="treino"></span>
           </div>
         </div>
 

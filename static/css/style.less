@@ -68,15 +68,11 @@ p {
   .centro;
 }
 
-input, select {
-  .borda;
-}
-
 [type='file'] {
   display: none;
 }
 
-span {
+#database {
   color: @middle-color;
   text-decoration: none;
   .borda;
@@ -103,23 +99,53 @@ svg {
   display: none;
 
   #esquerda {
-    .borda;
-    width: 50%;
+    width: 48%;
     float: left;
-    .little-box;
   }
 
   #direita {
-    .borda;
-    width: 50%;
+    width: 48%;
     float: right;
-    .little-box;
+  }
+
+  label {
+    display: block;
+    font-size: @fsize-sm;
+    margin-top: 8px;
+  }
+
+  select {
+    .borda;
+    .box;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    padding: 8px;
+    margin-top: 2px;
+    width: 100%;
+    background-color: white;
+  }
+
+  [type="range"] {
+    width: 75%;
+    margin-top: 8px;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  span {
+    float: right;
+    color: @middle-color;
+    text-decoration: none;
+    .borda;
   }
 }
 
 [type='submit'] {
-  width: 100%;
+  .borda;
   .little-box;
+  width: 100%;
   background-color: @light-color;
   color: @dark-color;
   font-size: @fsize-m;
