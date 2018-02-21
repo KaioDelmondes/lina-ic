@@ -13,6 +13,9 @@ Requisitos:
 * virtualenv
 * Flask
 * lesscss
+* pandas
+* scipy
+* scikit-learn
 
 #### Instalar Python 3 ####
 
@@ -64,6 +67,12 @@ Com o ambiente virtual ativado instale o framework Flask:
 Biblioteca para converter código .less em .css:
 
 > pip install lesscss
+
+#### Instalar outras dependências ####
+
+Bibliotecas científicas:
+
+> pip install pandas scipy scikit-learn
 
 #### Executar a aplicação ####
 
