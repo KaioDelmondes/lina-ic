@@ -9,6 +9,11 @@ LessCSS(media_dir='static', compressed=False)
 def server():
     return render_template('index.html')
 
+@app.route("/exec", methods=['POST'])
+def executar():
+    return "<h1>Foi</h1>"
+
+
 # Usado para executar no Windows
 if __name__ == "__main__":
     app.run()
