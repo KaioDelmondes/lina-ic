@@ -7,11 +7,14 @@
   * enviar: botão de envio
 */
 
+/* Endpoint para execução dos algoritmos*/
 const URL = 'exec';
 
+/* Recuperar o formulário, definir a ação e o método*/
 var formulario = document.getElementById('formulario');
 formulario.action = URL;
-formulario.method = "POST";
+formulario.method = 'POST';
+formulario.enctype = 'multipart/form-data';
 
 enviar.addEventListener('click', function() {
   /* 
