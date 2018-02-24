@@ -12,6 +12,9 @@ input.addEventListener('change', function() {
     var file = this.files[0];
     var name = file.name;
     var size = (file.size / 1048576).toFixed(3);
+    /* Remove o estilo caso tenha sido adicionado*/
+    span.style.color = '';
+    /* Adiciona essa classe, para deixar o texto mais escuro*/
     span.classList.add('withFile');
     span.textContent = name + ' (' + size + 'mb)';
   }
@@ -21,7 +24,7 @@ input.addEventListener('change', function() {
 var legend = document.getElementsByTagName('legend')[0];
 /* Pega o triangulo */
 var svgTriangle = legend.children[0];
-/* Pega a div "avancados" que fica oculta por padrão*/
+/* Pega a div 'avancados' que fica oculta por padrão*/
 var avancedOptions = document.getElementById('avancados');
 /* Evento de clique*/
 legend.addEventListener('click', function() {
@@ -49,12 +52,12 @@ legend.addEventListener('click', function() {
 });
 
 /* Elementos relacionados aos inputs do tipo range*/
-var range_varv = document.getElementsByName("varv")[0];
-var range_faixas = document.getElementsByName("faixas")[0];
-var range_treino = document.getElementsByName("treino")[0];
-var varv = document.getElementById("varv");
-var faixas = document.getElementById("faixas");
-var treino = document.getElementById("treino");
+var range_varv = document.getElementsByName('varv')[0];
+var range_faixas = document.getElementsByName('faixas')[0];
+var range_treino = document.getElementsByName('treino')[0];
+var varv = document.getElementById('varv');
+var faixas = document.getElementById('faixas');
+var treino = document.getElementById('treino');
 
 /*
   Pega os valores padrões dos inputs
@@ -75,4 +78,16 @@ range_faixas.addEventListener('change', function() {
 
 range_treino.addEventListener('change', function() {
   treino.innerHTML = this.value;
+});
+
+/* Botão submit: id = enviar*/
+var enviar = document.getElementById('enviar');
+enviar.addEventListener('click', function() {
+  /* 
+    Se não tiver arquivo selecionado
+    Exibir o texto do span em vermelho
+  */
+  if(input.files.length == 0) {
+    span.style.color = '#f44336';
+  }
 });
