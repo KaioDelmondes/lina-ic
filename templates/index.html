@@ -47,58 +47,47 @@
           <div id="esquerda">
             <!--
               Selecionar o algoritmo de Discretização:
-              O valor padrão é: [...].
-              As outras opções são:
-              * [...]
-              * [...]
             -->
-            <label>Algoritmo de Discretização</label>
-            <select name="alg_disc">
-              <option value="EDW">EDW</option>
-              <option value="EFD">EFD</option>
+            <label>{{ inputs.discretizacao.label }}</label>
+            <select name="{{ inputs.discretizacao.name }}">
+              {% for option in inputs.discretizacao.options %}
+                <option value="{{ option.value }}">{{ option.name }}</option>
+              {% endfor %}
             </select>
             
             <!--
-              A variação V expressa em porcentagem (%), é utilizada para
-              eliminar a possível ambiguidade entre clusters selecionando
-              todos os atributos que possuem até um diferença V em relação
-              ao atributo com maior taxa de acerto e descartar os demais.
+              Inputs para Discretização
             -->
-            <label>Variação V. (%)</label>
-            <input type="range" name="varv" value="10" min="1" max="20">
-            <span id="varv"></span>
-            
-            <!--
-              Número de faixas de valores para discretização. Este valor
-              representa a quantidade de valores discretos que um atributo
-              pode assumir.
-            -->
-            <label>Nº de faixas</label>
-            <input type="range" name="faixas" value="3" min="1" max="10">
-            <span id="faixas"></span>
+            {% for input in inputs.discretizacao.inputs %}
+              <label>{{ input.label }}</label>
+              {% if input.type == 'range' %}
+                <input type="{{ input.type }}" name="{{ input.name }}" value="{{ input.value }}" min="{{ input.min }}" max="{{ input.max }}">
+                <span id="{{ input.name }}"></span>
+              {% endif %}
+            {% endfor %}
           </div>
 
           <div id="direita">
             <!--
               Selecionar o algoritmo de Classificação:
-              O valor padrão é: [...].
-              As outras opções são:
-              * [...]
-              * [...]
             -->
-            <label>Algoritmo de Classificação</label>
-            <select name="alg_clas">
-              <option value="MLP">MLP</option>
-              <option value="DECISION_TREE">Árvore de Decisão</option>
+            <label>{{ inputs.classificacao.label }}</label>
+            <select name="{{ inputs.classificacao.name }}">
+              {% for option in inputs.classificacao.options %}
+                <option value="{{ option.value }}">{{ option.name }}</option>
+              {% endfor %}
             </select>
             
             <!--
-              Percentagem de elementos da base de dados que servirão
-              de entrada para a fase de treinamento do modelo proposto.
+              Inputs para Classificação
             -->
-            <label>% de dados para treino</label>
-            <input type="range" name="treino" value="60" min="40" max="80">
-            <span id="treino"></span>
+            {% for input in inputs.classificacao.inputs %}
+              <label>{{ input.label }}</label>
+              {% if input.type == 'range' %}
+                <input type="{{ input.type }}" name="{{ input.name }}" value="{{ input.value }}" min="{{ input.min }}" max="{{ input.max }}">
+                <span id="{{ input.name }}"></span>
+              {% endif %}
+            {% endfor %}
           </div>
         </div>
 

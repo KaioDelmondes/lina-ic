@@ -3,15 +3,17 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import jsonify
+from controller import main
+import inputs
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'databases'
 
 LessCSS(media_dir='static', compressed=False)
 
 @app.route("/")
 def server():
-    return render_template('index.html')
+    data = inputs.get_inputs()
+    return render_template('index.html', inputs=data)
 
 @app.route("/exec", methods=['POST'])
 def executar():
@@ -23,6 +25,7 @@ def executar():
         'varv' : request.form['varv'],
     }
     file = request.files['database']
+    #main(data, file)
     return jsonify(data)
 
 
