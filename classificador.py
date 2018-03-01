@@ -64,11 +64,11 @@ def rotular(cluster, infor, holdout_val, V):
 	valor_max = medias.max() #Pega o valor do atributo 
 	rotulo = ''
 	for i in range(0, medias.shape[0]):
-		if (medias[i] < valor_max - V): 
+		if (medias[i] < ((100-V)*valor_max)/100): 
 			continue
 		else:
 			mr = Counter(cluster[:,i]).most_common(1) #retorna uma tupla com o numero que mais aparece no atributo avaliado e quantas ocorrencias
-			mr = mr[0][0] #Retira apenas a parte que mais interessa
+			mr = int(mr[0][0]) #Retira apenas a parte que mais interessa
 			rotulo += "Atributo " + str(i) + ": " + str(infor[i][mr]) + " ~ " + str(infor[i][mr + 1]) + " | Relevância: " + str(medias[i]) + "%\n"
 
 	return rotulo
