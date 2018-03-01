@@ -1,5 +1,6 @@
 import pandas as pd 
 import numpy as np
+import discretizador as disc
 
 
 # Classe ReadData
@@ -10,16 +11,24 @@ import numpy as np
 class readData (object):
 	
 	def __init__(self, file):
-		self.file = file 
+		self.db = pd.read_csv(file,sep=',',parse_dates=True)   # read_csv carrega um arquivo csv
 
 	def criarsubconjunto(self, data):
 		grup = pd.DataFrame(data)
-		return grup		
+		return grup				
 
-	def leitorCSV(self):
-		db = pd.read_csv(self.file,sep=',',parse_dates=True)   # read_csv carrega um arquivo csv
-		col = db.shape[1]-1                                    # shape retorna uma tupla com o número de linhas e colunas - col armazena o numero de colunas
-		grouped = db.groupby(db.columns[col])                  # agrupa os dados pelo atributo cluster
+	def agrupador(self):
+		
+		col = self.db.shape[1]-1                                    # shape retorna uma tupla com o número de linhas e colunas - col armazena o numero de colunas
+		bdd = self.db.drop(self.db.columns[col], axis=1)
+		bdd, infor = disc.discretizador(bdd.get_values(), [3,3,3,3], "EFD")
+
+		nova_ma = np.zeros((bdd.shape[0], bdd.shape[1]+1))
+		nova_ma[:,:col] = bdd
+		nova_ma[:,col] = self.db.get_values()[:,col]
+		bdd = self.criarsubconjunto(nova_ma)
+		
+		grouped = bdd.groupby(bdd.columns[col])                  # agrupa os dados pelo atributo cluster
 				
 		# cria um conjunto de dataframes, cada dataframe representa um grupo
 		frames = [] 								           
@@ -27,6 +36,6 @@ class readData (object):
 			cluster = grouped.get_group(j)
 			cluster = cluster.drop(cluster.columns[[col]],axis = 1) 
 			frames.append(self.criarsubconjunto(cluster.get_values()))
-		return db, frames
+		return bdd, infor, frames
 
 	
