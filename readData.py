@@ -6,7 +6,7 @@ import discretizador as disc
 # Classe ReadData
 # Recebe o caminho do arquivo csv já agrupado
 # O método leitorCSV divide os dados em dataframes, um para cada grupo, retirando o atributo cluster da tabela
-# Retorna uma lista de DF dos grupos  e a base original
+# Retorna a base de dados discretizada, as informações da discretização e um frame de cada grupo
 
 class readData (object):
 	
@@ -18,17 +18,16 @@ class readData (object):
 		return grup				
 
 	def agrupador(self):
-		
 		col = self.db.shape[1]-1                                    # shape retorna uma tupla com o número de linhas e colunas - col armazena o numero de colunas
-		bdd = self.db.drop(self.db.columns[col], axis=1)
-		bdd, infor = disc.discretizador(bdd.get_values(), [3,3,3,3], "EFD")
-
-		nova_ma = np.zeros((bdd.shape[0], bdd.shape[1]+1))
-		nova_ma[:,:col] = bdd
-		nova_ma[:,col] = self.db.get_values()[:,col]
-		bdd = self.criarsubconjunto(nova_ma)
+		data = self.db.drop(self.db.columns[col], axis=1)		    # data copia os valores da base de dados ignorando o atributo cluster
+		bdd_, infor = disc.discretizador(data.get_values(), [3,3,3,3], "EFD") # bdd_ recebe os valores da base discretizados
 		
-		grouped = bdd.groupby(bdd.columns[col])                  # agrupa os dados pelo atributo cluster
+		# Sobrescreve a base de dados original (db) com os atributos discretizados
+		for x in range (0,col):
+			self.db.loc[:,self.db.columns[x]] = [y[x] for y in bdd_]
+		
+		# agrupa os dados pelo atributo cluster	
+		grouped = self.db.groupby(self.db.columns[col])                 
 				
 		# cria um conjunto de dataframes, cada dataframe representa um grupo
 		frames = [] 								           
@@ -36,6 +35,9 @@ class readData (object):
 			cluster = grouped.get_group(j)
 			cluster = cluster.drop(cluster.columns[[col]],axis = 1) 
 			frames.append(self.criarsubconjunto(cluster.get_values()))
-		return bdd, infor, frames
 
+		#retorna a base de dados discretizada, as informações da discretização e um frame de cada grupo
+		return self.db, infor, frames
+
+#caminho = "C:\\Users\\LuciaEmilia\\Desktop\\iris.csv"
 	
