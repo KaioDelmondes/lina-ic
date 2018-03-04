@@ -1,18 +1,18 @@
 import pandas as pd
 
 # Classe de discretizacao de dados 
-# Recebe como parâmetros a lista de dados a serem discretizados e o número de faixas desejado
-
-class discretizacao (object):
+# Recebe como parâmetros a lista de atributos (attr_list) a serem discretizados e o número de faixas desejado (num_bins)
+# Retorna a lista de atributos discretizada (discr_list)
+class discretization (object):
 	
-	def __init__ (self, lista, numIntervalos):
-		self.lista = lista
-		self.numIntervalos = numIntervalos		
+	def __init__ (self, attr_list, num_bins):
+		self.attr_list = attr_list
+		self.num_bins = num_bins		
 
-	#Testa se a lista de valores recebida tem intervalo maior que zero, ou seja, todos os dados sao iguais.
+	#Testa se a lista de valores recebida é discreta, retornando True, ou contínua, retornando False.
 	def teste (self):
-		unics =  sorted(set(self.lista))
-		if len(unics)<2: 
+		unics = sorted(set(self.attr_list))
+		if len(unics)<self.num_bins: 
 			return True
 		else: 
 			return False 
@@ -20,18 +20,18 @@ class discretizacao (object):
 	# Discretiza os dados pelo critério de larguras iguais. Retorna faixas de valores com aproximadamente o mesmo tamanho.
 	def EWD (self):
 		if not self.teste():
-			dados_discr = pd.cut(self.lista, bins = self.numIntervalos, labels = False, retbins= True)
-			return dados_discr
+			discr_attr = pd.cut(self.attr_list, bins = self.num_bins, labels = False, retbins= True)
+			return discr_attr
 		else :
-			return self.lista
+			return self.attr_list
 			
 	# Disretiza os dados pelo critério de frequências iguais.Retorna faixas de valores com aproximadamente o mesmo número de dados.
 	def EFD (self):
 		if not self.teste():
-			dados_discr = pd.qcut(self.lista, self.numIntervalos, labels = False, retbins = True, duplicates = 'drop')
-			return dados_discr
+			discr_attr = pd.qcut(self.attr_list, self.num_bins, labels = False, retbins = True, duplicates = 'drop')
+			return discr_attr
 		else: 
-			return self.lista
+			return self.attr_list
 
 
 	
