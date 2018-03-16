@@ -79,15 +79,3 @@ range_faixas.addEventListener('change', function() {
 range_treino.addEventListener('change', function() {
   treino.innerHTML = this.value;
 });
-
-/* Botão submit: id = enviar*/
-var enviar = document.getElementById('enviar');
-enviar.addEventListener('click', function() {
-  /* 
-    Se não tiver arquivo selecionado
-    Exibir o texto do span em vermelho
-  */
-  if(input.files.length == 0) {
-    span.style.color = '#f44336';
-  }
-});
