@@ -1,0 +1,94 @@
+Usuário:{
+	Carregar Base de Dados
+	Agrupar Base
+	Discretizar Base
+	Rotular Cluster(s)
+	Salvar Resultados
+}
+
+OBS:{
+	Seria interessante o usuário poder visualizar, após o passo "Discretizar a Base", a faixa de valor calculada para cada atributo antes de partir para a Rotulação.
+	Outra opção que pode ser dada ao usuário é de rotular apenas os clusters de sua preferência. Checkboxs poderiam ser usadas para isso.
+}
+
+Fluxos:{
+	Carregar Base de Dados:{
+		Fluxo Principal:{
+			Usuário clica no botão "Carregar uma Base".
+			Usuário navega até a localização da base, que deve estar no formato csv.
+			Usuário clica no botão "Avançar".
+		}
+		Fluxos Alternativos:{
+			A1: Base Agrupada{
+
+			}
+			A2: Base Discretizada{
+				(Esse fluxo pode disparar um caso de uso alternativo "Definir faixas de Valores", pois a informação das faixas de valores não está disponível na base)
+			}
+			A3: Base Agrupada e Discretizada{
+
+			}
+		}
+		Fluxos de Erro/Exceção:{
+			E1: Arquivo em formato inválido{
+
+			}
+		}
+	}
+	Agrupar Base:{
+		Fluxo Principal:{
+			Usuário seleciona qual o algoritmo desejado para o agrupamento: Kmeans...
+			Usuário altera os parâmetros de sua preferência: Parâmetro K...
+			Usuário clica em avançar.
+			A tela com os resultados do agrupamento é exibida.
+		}
+		Fluxos Alternativos:{
+
+		}
+		Fluxos de Erro/Exceção:{
+
+		}
+	}
+	Discretizar Base:{
+		Fluxo Principal:{
+			Usuário seleciona qual o algoritmo desejado para a discretização: Por faixas(EWD), Por frequência(EFD)...
+			Usuário altera os parâmetros de sua preferência: ...
+			Usuário clica em avançar.
+			A tela com os resultados da discretização é exibida. (Poderia ser colocada aqui informações sobre as faixas de valores dos atributos)
+		}
+		Fluxos Alternativos:{
+
+		}
+		Fluxos de Erro/Exceção:{
+
+		} 
+	}
+	Rotular Cluster(s):{
+		Fluxo Principal:{
+			Usuário escolhe qual o algoritmo desejado para fazer a avaliação da relevância dos atributos: RNA, CART, J48...
+			Usuário modifica ao seu gosto os parâmetros correspondentes ao método de classificação selecionado no passo anterior: hidden_layers, função de ganho de informação...
+			Usuário clica em avançar.
+			A tela com os resultados do agrupamento é exibida.
+		}
+		Fluxos Alternativos:{
+
+		}
+		Fluxos de Erro/Exceção:{
+
+		} 
+	}
+	Salvar Resultados:{
+		Fluxo Principal:{
+			Ao passo que o usuário está, ele clica no botão salvar resultado.
+			Usuário seleciona o diretório no qual deseja salvar a base modificada com o nome desejado
+			Usuário clica em "Salvar"
+			**As bases serão salvas no formato CSV?**
+		}
+		Fluxos Alternativos:{
+
+		}
+		Fluxos de Erro/Exceção:{
+
+		} 
+	}
+}
