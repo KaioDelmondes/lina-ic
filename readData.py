@@ -81,4 +81,3 @@ class readData (object):
 		return ddb, info, frames
 
 #caminho = "C:\\Users\\LuciaEmilia\\Desktop\\iris.csv"
-	
